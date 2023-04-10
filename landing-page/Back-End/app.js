@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import postRouter from './routes/post-routes.js';
 import { getAllPosts } from './controllers/post-controller.js';
 import { posts } from './controllers/post-controller.js';
+// import { addPost } from './controllers/post-controller.js';
 const app = express();
 
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(router);
 app.use(bodyParser.json());
 // app.use("/api/posts", getAllPosts);
 // app.use("/api/post", posts);
+// app.use("/api/add", addPost);
 app.use( postRouter);
 
 

@@ -20,7 +20,8 @@ const postSchema = new Schema({
         required: true,
     },
     user: {
-      type: String,
+      type: mongoose.Types.ObjectId, //getting the id of the user
+      ref: 'User', //referring to the user model
       required: true,
       
     },

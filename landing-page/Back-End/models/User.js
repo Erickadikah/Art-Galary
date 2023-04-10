@@ -16,7 +16,8 @@ const UserSchemer = new Schema({
         type: String,
         required: true,
         minimum: 6
-    }
+    },
+    posts: [ {type: mongoose.Types.ObjectId, ref: 'Post', required: true}]
 });
 
 export default mongoose.model('User', UserSchemer);
