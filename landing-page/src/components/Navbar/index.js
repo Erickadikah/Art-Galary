@@ -59,11 +59,12 @@ function Navbar({ toggle }) {
                     <NavLinks to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Services</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks to='signup' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign up</NavLinks>
+                    <NavLinks to='/signup' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign up</NavLinks>
                 </NavItem>
                 <NavBtn>
                 </NavBtn>
                   <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                  <NavBtnLink to="/signup">Sign Up</NavBtnLink>
                 </NavMenu>
             </NavbarContainer>
         </Nav>

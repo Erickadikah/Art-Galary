@@ -27,12 +27,12 @@ export const signup = async (req, res, next) => {
     if (existingUser) {
         return res.status(400).json({ message: "User already exists Login Instead" });
     }
-    const hashedPassword = bcrypt.hashSync(password); //method to encrypt password
+    const hashedPassword = bcrypt.hashSync(password); 
 
     const user = new User({
         name,
         email,
-        password: hashedPassword, //encrypted password
+        password: hashedPassword,
         blogs: [],
     });
     try {
@@ -45,6 +45,8 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
     const { email, password } = req.body;
+    console.log(req.body)
+
     let existingUser;
     try {
         existingUser = await User.findOne({ email });
@@ -56,11 +58,10 @@ export const login = async (req, res, next) => {
         .status(404)
         .json({ message: "Couldnt Find User By this Email" });
     }
-
     const isValidPassword = bcrypt.compareSync(password, existingUser.password);
     if (!isValidPassword) {
-        return res.status(401).json({ message: "Invalid Credentials" });
-    }
-    res.status(200).json({ message: "Logged In Sucessfuly" });
+    return res.status(401).json({ message: "Invalid Credentials" });
+}
+
 
 }

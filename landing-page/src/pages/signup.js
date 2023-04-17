@@ -13,9 +13,10 @@ import {
 } from '../Signin/SigninElements';
 // import { useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
-  // const navigate = useNavigate();
+const SignUp = () => {
+  const useNavigate = useNavigate();
   const [inputs, setInputs] = useState({
+    name: '',
     email: '',
     password: ''
   });
@@ -25,10 +26,10 @@ const SignIn = () => {
     setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
   };
 
-  const handleSignIn = async (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(inputs)
@@ -39,12 +40,12 @@ const SignIn = () => {
       }
       const data = await response.json();
       console.log(data);
-      // Update UI with data from backend
+        // Update UI with data from backend
+    navigate('/');
     } catch (error) {
       console.log(error);
     }
   };
-  // navigate('/');
 
   return (
     <>
@@ -52,8 +53,16 @@ const SignIn = () => {
         <FormWrap>
           <Icon to="/">Art Gallery</Icon>
           <FormContent>
-            <Form onSubmit={handleSignIn}>
-              <FormH1>Login in to your account</FormH1>
+            <Form onSubmit={handleSignUp}>
+              <FormH1>Create New account</FormH1>
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormInput
+                type="name"
+                required
+                name="name"
+                value={inputs.name}
+                onChange={handleInputChange}
+              />
               <FormLabel htmlFor="email">Email</FormLabel>
               <FormInput
                 type="email"
@@ -71,7 +80,7 @@ const SignIn = () => {
                 onChange={handleInputChange}
               />
               <FormButton type="submit">Continue</FormButton>
-              <Text>Forgot password</Text>
+              <Text>Already have an account login</Text>
             </Form>
           </FormContent>
         </FormWrap>
@@ -80,4 +89,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
