@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../components/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Container,
   FormWrap,
@@ -11,10 +14,10 @@ import {
   FormButton,
   Text
 } from '../Signin/SigninElements';
-// import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-  const useNavigate = useNavigate();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
@@ -41,7 +44,9 @@ const SignUp = () => {
       const data = await response.json();
       console.log(data);
         // Update UI with data from backend
-    navigate('/');
+        if (isAuthenticated) {
+          navigate('/Landingpage');
+        }
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +85,9 @@ const SignUp = () => {
                 onChange={handleInputChange}
               />
               <FormButton type="submit">Continue</FormButton>
-              <Text>Already have an account login</Text>
+              <Text>Already have an account login 
+              <Link to='/SignIn'>Login</Link>
+              </Text>
             </Form>
           </FormContent>
         </FormWrap>

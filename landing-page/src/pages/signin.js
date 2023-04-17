@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../components/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   FormWrap,
@@ -11,10 +13,10 @@ import {
   FormButton,
   Text
 } from '../Signin/SigninElements';
-// import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
@@ -39,12 +41,13 @@ const SignIn = () => {
       }
       const data = await response.json();
       console.log(data);
-      // Update UI with data from backend
+      if (isAuthenticated) {
+        navigate('/Landingpage');
+      }
     } catch (error) {
       console.log(error);
     }
   };
-  // navigate('/');
 
   return (
     <>
