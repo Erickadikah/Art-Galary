@@ -26,7 +26,6 @@ export const HomeObjTwo = {
     buttonLabel: 'Learn More',
     imgStart: true,
     img: require('../../images/svg-2.svg').default,
-    img: require('../../images/svg-8.svg').default,
     alt: 'Online transaction',
     dark: false,
     primary: false,

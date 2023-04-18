@@ -1,0 +1,15 @@
+body {
+    background-color: #101522;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.Landingpage{
+    justify-Content: center;
+    color: white;
+    /* background-Color: grey; */
+    text-Align: center;
+    font-size: 10px;
+}
