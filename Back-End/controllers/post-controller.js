@@ -1,5 +1,6 @@
 import Post from "../models/Post.js";
 import User from "../models/User.js";
+import mongoose from "mongoose";
 
 export const getAllPosts = async (req, res, next) => {
     let posts;
@@ -111,6 +112,7 @@ export const deletePost = async (req, res, next) => {
     try {
         post = await Post.findByIdAndDelete(id).populate("user");
         await post.user.posts.pull(post);
+        await post.user.save();
     }
     catch (err) {
         console.log(err);
@@ -125,7 +127,7 @@ export const getByUserId = async (req, res, next) => {
     const userId = req.params.id;
     let userPosts;
     try {
-        userPosts = await User.findById(userId).populate("post")
+        userPosts = await User.findById(userId).populate("posts")
     }
     catch (err) {
         return console.log(err)

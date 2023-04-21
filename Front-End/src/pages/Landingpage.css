@@ -1,5 +1,6 @@
 body {
     background-color: #101522;
+    /* background-color: white; */
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     margin: 0;
@@ -7,9 +8,72 @@ body {
 }
 
 .Landingpage{
-    justify-Content: center;
     color: white;
-    /* background-Color: grey; */
-    text-Align: center;
     font-size: 10px;
+}
+
+.item {
+    height: 200px;
+    width: 600px;
+    background-color: azure;
+    display: flex;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+
+    @media screen and (max-width: 768px) {
+        width: 600px;
+        height: 200px;
+    }
+        
+}
+
+.top_icons {
+    /* display: flex; */
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 20px;
+}
+
+.button {
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  display: inline-flex;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #01BF71;
+}
+
+button:focus {
+  outline: none;
+}
+
+button svg {
+  width: 150px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.my_buttons {
+    display: flex;
+    justify-content: space-between;
+    /* flex-grow: 10rm; */
+    /* gap: 360px; */
+    color: white;
+}
+    @media only screen and (max-width: 600px) {
+      .my_buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .button {
+        margin-bottom: 10px 0;
+      }
 }
