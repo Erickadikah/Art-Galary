@@ -11,6 +11,11 @@ import {
 import Home from "./pages";
 import SigninPage from "./pages/signin";
 import Landingpage from "./pages/Landingpage";
+import Post from "./pages/Post";
+import PostDetails from "./pages/PostDetails";
+import UserPosts from "./pages/UserPosts";
+import AddPost from "./pages/AddPost";
+
 
 function App() {
   return (
@@ -20,7 +25,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/posts" element={<Post />} />
+        <Route path="/PostDetails" element={<PostDetails />} />
+        <Route path="/UserPosts" element={<UserPosts />} />
         <Route path="/LandingPage" element={<Landingpage />} />
+        <Route path="/myPosts/:id" element={<PostDetails />} />
+        <Route path="/posts/add" element={<AddPost />} />
       </Routes>
     </Router>
     </AuthProvider>

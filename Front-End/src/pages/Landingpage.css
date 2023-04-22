@@ -63,9 +63,8 @@ button svg {
 
 .my_buttons {
     display: flex;
+    margin-top: 200px;
     justify-content: space-between;
-    /* flex-grow: 10rm; */
-    /* gap: 360px; */
     color: white;
 }
     @media only screen and (max-width: 600px) {
