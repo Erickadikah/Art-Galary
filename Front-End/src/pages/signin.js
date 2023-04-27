@@ -1,26 +1,15 @@
-import React, { useState, useContext } from 'react';
-import { AuthContext } from '../components/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import {
-  Container,
-  FormWrap,
-  Icon,
-  FormContent,
-  Form,
-  FormH1,
-  FormLabel,
-  FormInput,
-  FormButton,
-  Text
-} from '../Signin/SigninElements';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text } from '../Signin/SigninElements';
 
 const SignIn = () => {
-  const navigate = useNavigate();
-  const { isAuthenticated } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
   });
+
+  const [isEmailError, setIsEmailError] = useState(false);
+  const [isPasswordError, setIsPasswordError] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,22 +19,29 @@ const SignIn = () => {
   const handleSignIn = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(inputs)
+      const res = await axios.post('http://localhost:5000/api/login', {
+        email: inputs.email,
+        password: inputs.password
       });
-      console.log(response);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
+      const data = res.data;
       console.log(data);
-      if (isAuthenticated) {
-        navigate('/Landingpage');
+      if (data.status === 'success') {
+         console.log('success');
+
+        // handle successful signin here
       }
-    } catch (error) {
-      console.log(error);
+      // handle successful signin here
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 400) {
+          setIsEmailError(true);
+          setIsPasswordError(true);
+        } else if (err.response.status === 401) {
+          setIsPasswordError(true);
+        }
+      } else {
+        console.log(err);
+      }
     }
   };
 
@@ -64,7 +60,12 @@ const SignIn = () => {
                 name="email"
                 value={inputs.email}
                 onChange={handleInputChange}
+                autocomplete="email"
+                className={isEmailError ? 'error' : ''}
               />
+              {isEmailError && (
+                <Text color="#ff0000">Invalid email or password</Text>
+              )}
               <FormLabel htmlFor="password">Password</FormLabel>
               <FormInput
                 type="password"
@@ -72,9 +73,17 @@ const SignIn = () => {
                 name="password"
                 value={inputs.password}
                 onChange={handleInputChange}
+                autocomplete="current-password"
+                className={isPasswordError ? 'error' : ''}
               />
+              {isPasswordError && (
+                <Text color="#ff0000">Invalid email or password</Text>
+              )}
               <FormButton type="submit">Continue</FormButton>
-              <Text>Forgot password</Text>
+              <Text>Don't have an account?</Text>
+              <Text>
+                <a href="/signup">Sign up</a>
+              </Text>
             </Form>
           </FormContent>
         </FormWrap>

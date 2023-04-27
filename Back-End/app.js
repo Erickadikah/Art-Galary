@@ -6,8 +6,9 @@ import postRouter from './routes/post-routes.js';
 import { getAllPosts } from './controllers/post-controller.js';
 import { posts } from './controllers/post-controller.js';
 import { addPost } from './controllers/post-controller.js';
+import cors from 'cors';
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 app.use(router);
 app.use(bodyParser.json());

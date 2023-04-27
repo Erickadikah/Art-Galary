@@ -4,36 +4,47 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineRise } from "react-icons/ai";
-import {AppBar, Typography, Box, Tab, Tabs, Toolbar, Button} from '@material-ui/core';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-// import { FaBars } from 'react-icons/fa';
+import {  
+  Box, 
+  Toolbar, 
+  Button,
+} from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import BasicTabs from '../components/Tabs/MyTab';
+
 
 const Landingpage = () => {
-  const [value, setValue] = useState();
+  const isLoggedin = useSelector((state) => state.isLoggedin);
+  console.log(isLoggedin);
+  const [value, setValue] = React.useState("1");
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <>
-    <AppBar style={{ background: '#101522'}}>
+    
     <Toolbar>
-    <Typography variant="contained" >Dashboard</Typography>
-  <Box display="flex" marginRight={'auto'} marginLeft={'auto'} >
-      <Tabs setColor="inherit" value={value} onChange={(e, val) => setValue(val)}>
-        <Tab LinkComponent={Link} to="/posts" label="All Products" />
-        <Tab LinkComponent={Link} to="/UserPosts" label="My Products" />
-        <Tab label="My Orders" />
-        <Tab label="Add Product" />
-      </Tabs>
-    </Box>
-    <Box>
+    
+ {
+  // tabs section starts here
+ }
+<BasicTabs/>
+
+ {
+  // End of tabs section TAB
+ }
+
+    <Box> {isLoggedin && (
     <Button variant="contained" LinkComponent={Link} to="/signin"
     style={{  marginRight: '10px', borderRadius: '10px'}}
     color="#01BF71">
     Log out
-    </Button>
+    </Button> )}
     </Box>
     </Toolbar>
-    </AppBar>
+    
     <div>
     <div className='my_buttons' >
   <div>

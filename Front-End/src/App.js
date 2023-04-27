@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import SignupPage from "./pages/signup";
 import { AuthProvider } from "./components/AuthContext";
-
 import {
   Route,
   Routes,
@@ -15,9 +14,12 @@ import Post from "./pages/Post";
 import PostDetails from "./pages/PostDetails";
 import UserPosts from "./pages/UserPosts";
 import AddPost from "./pages/AddPost";
+import { useSelector } from "react-redux";
 
 
 function App() {
+  const isLoggedin = useSelector((state) => state.isLoggedin);
+  console.log(isLoggedin);
   return (
     <AuthProvider>
     <Router>

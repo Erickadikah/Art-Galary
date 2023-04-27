@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Post = () => {
+const PostComp = () => {
   return (
-    <div style={{ marginTop: '200px'}}>
-      <h1>posts</h1>
+    <div style={{color: 'white'}}>
+      <h1>posts tab test</h1>
     </div>
   );
 }
 
-export default Post;
+export default PostComp;

@@ -14,8 +14,10 @@ import {
   FormButton,
   Text
 } from '../Signin/SigninElements';
+import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
@@ -31,12 +33,13 @@ const SignUp = () => {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
+    console.log(inputs);
     try {
-      const response = await fetch('/signup', {
+      const response = await fetch('/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(inputs)
-      });
+      }).then(() =>navigate('/Landingpage'));
       console.log(response);
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -45,7 +48,7 @@ const SignUp = () => {
       console.log(data);
         // Update UI with data from backend
         if (isAuthenticated) {
-          navigate('/Landingpage');
+          navigate('');
         }
     } catch (error) {
       console.log(error);
@@ -94,6 +97,6 @@ const SignUp = () => {
       </Container>
     </>
   );
-};
+  };
 
 export default SignUp;
