@@ -1,47 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../components/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {
+  Container,
+  FormWrap,
+  Icon,
+  FormContent,
+  Form,
+  FormH1,
+  FormLabel,
+  FormInput,
+  FormButton,
+  Text
+} from '../Signin/SigninElements';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text } from '../Signin/SigninElements';
 
-const SignIn = () => {
+const SignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
   });
 
-  const [isEmailError, setIsEmailError] = useState(false);
-  const [isPasswordError, setIsPasswordError] = useState(false);
+  console.log('isAuthenticated', isAuthenticated);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
   };
-
-  const handleSignIn = async (event) => {
-    event.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:5000/api/login', {
-        email: inputs.email,
-        password: inputs.password
-      });
-      const data = res.data;
-      console.log(data);
-      if (data.status === 'success') {
-         console.log('success');
-
-        // handle successful signin here
-      }
-      // handle successful signin here
-    } catch (err) {
-      if (err.response) {
-        if (err.response.status === 400) {
-          setIsEmailError(true);
-          setIsPasswordError(true);
-        } else if (err.response.status === 401) {
-          setIsPasswordError(true);
-        }
-      } else {
-        console.log(err);
-      }
+  const sendRequest = async (e) => {
+  try {
+    const res = await axios.post("http://localhost:5000/api/user/login", {
+      email: inputs.email,
+      password: inputs.password
+    });
+    const data = res.data;
+    localStorage.setItem('userId', data.user._id);
+    return data;
+  } catch (error) {
+    console.log(error);
+    navigate('/Landingpage');
+  }
+};
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    console.log(inputs);
+    const data = await sendRequest();
+    if (data && data.status === 'success') {
+        navigate('/Landingpage');
+      console.log('navigate to landing page');
     }
   };
 
@@ -51,8 +62,8 @@ const SignIn = () => {
         <FormWrap>
           <Icon to="/">Art Gallery</Icon>
           <FormContent>
-            <Form onSubmit={handleSignIn}>
-              <FormH1>Login in to your account</FormH1>
+            <Form onSubmit={handleSignUp}>
+              <FormH1>Login</FormH1>
               <FormLabel htmlFor="email">Email</FormLabel>
               <FormInput
                 type="email"
@@ -60,12 +71,7 @@ const SignIn = () => {
                 name="email"
                 value={inputs.email}
                 onChange={handleInputChange}
-                autocomplete="email"
-                className={isEmailError ? 'error' : ''}
               />
-              {isEmailError && (
-                <Text color="#ff0000">Invalid email or password</Text>
-              )}
               <FormLabel htmlFor="password">Password</FormLabel>
               <FormInput
                 type="password"
@@ -73,16 +79,10 @@ const SignIn = () => {
                 name="password"
                 value={inputs.password}
                 onChange={handleInputChange}
-                autocomplete="current-password"
-                className={isPasswordError ? 'error' : ''}
               />
-              {isPasswordError && (
-                <Text color="#ff0000">Invalid email or password</Text>
-              )}
               <FormButton type="submit">Continue</FormButton>
-              <Text>Don't have an account?</Text>
-              <Text>
-                <a href="/signup">Sign up</a>
+              <Text>Dont have an account login 
+              <Link to='/signup'>SignUp</Link>
               </Text>
             </Form>
           </FormContent>
@@ -92,4 +92,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

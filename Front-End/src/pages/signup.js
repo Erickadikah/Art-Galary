@@ -47,9 +47,12 @@ const SignUp = () => {
       const data = await response.json();
       console.log(data);
         // Update UI with data from backend
-        if (isAuthenticated) {
-          navigate('');
-        }
+      if (isAuthenticated) {
+  dispatch({ type: 'LOGIN', payload: data })
+    .then((data) => localStorage.setItem('userId', data.user._id))
+    .then(() => navigate('/Landingpage'));
+}
+
     } catch (error) {
       console.log(error);
     }

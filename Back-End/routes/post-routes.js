@@ -8,9 +8,9 @@ import { deletePost } from "../controllers/post-controller.js";
 const postRouter = express.Router();
 
 
-postRouter.get("/", getAllPosts);
+postRouter.get("/api/posts", getAllPosts);
 postRouter.post("/api/post/add", addPost);
-postRouter.post("/api/post", posts);
+postRouter.get("/api/post", posts);
 postRouter.put("/api/post/update/:id", updatePost);
 postRouter.get("/api/post/:id", getById)
 postRouter.delete("/api/post/:id" , deletePost);

@@ -45,7 +45,7 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
     const { email, password } = req.body;
-    console.log(req.body)
+    console.log(req.body);
 
     let existingUser;
     try {
@@ -60,8 +60,7 @@ export const login = async (req, res, next) => {
     }
     const isValidPassword = bcrypt.compareSync(password, existingUser.password);
     if (!isValidPassword) {
-    return res.status(401).json({ message: "Invalid Credentials" });
-}
-
-
-}
+    return res.status(400).json({ message: "Invalid Credentials" });
+    }
+    return res.status(200).json({ message: "Login Succesfull", user: existingUser });
+};

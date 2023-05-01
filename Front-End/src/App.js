@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 
 
 function App() {
+  //Logged in user state and log out button functionality
   const isLoggedin = useSelector((state) => state.isLoggedin);
   console.log(isLoggedin);
   return (

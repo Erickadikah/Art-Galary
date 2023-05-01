@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const UserSchemer = new Schema({
+const UserSchema = new Schema({
     name : {
         type: String,
         required: true
@@ -15,11 +15,11 @@ const UserSchemer = new Schema({
     password : {
         type: String,
         required: true,
-        minimum: 6
+        minlength: 6
     },
     posts: [ {type: mongoose.Types.ObjectId, ref: 'Post', required: true}]
 });
 
-export default mongoose.model('User', UserSchemer);
+export default mongoose.model('User', UserSchema);
 //stored in the database as users
 // Compare this snippet from landing-page/Back-End/models/User.js:
