@@ -29,8 +29,13 @@ const Landingpage = () => {
  {
   // tabs section starts here
  }
+<div style={{
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  position: 'sticky'
+}}>
 <BasicTabs/>
-
+</div>
  {
   // End of tabs section TAB
  }

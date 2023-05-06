@@ -68,9 +68,13 @@ export default function BasicTabs() {
 
   return (
     <>
-      <AppBar></AppBar>
-      <Box marginLeft="auto" marginRight="auto">
-        <Box display="flex" backgroudColor="green">
+      
+      <Box marginLeft="auto" marginRight="auto" >
+        <Box display="flex" style={{
+          position: 'sticky',
+          top:'0',
+          zIndex: '1000',
+        }} just backgroudColor="green">
           <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="All Products" {...a11yProps(0)} />
             <Tab label="Udate My Products" {...a11yProps(1)} />

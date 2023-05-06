@@ -77,7 +77,7 @@ export const updatePost = async (req, res, next) => {
         post = await Post.findByIdAndUpdate(postId, {
         price,
         title,
-        description
+        description,
     });
     } catch (err) {
         console.log(err);
@@ -135,5 +135,5 @@ export const getByUserId = async (req, res, next) => {
     if(!userPosts) {
         return res.status(404).json({message: "No posts Found"})
     }
-    return res.status(200).json({blog:userPosts})
+    return res.status(200).json({user: userPosts})
 }
