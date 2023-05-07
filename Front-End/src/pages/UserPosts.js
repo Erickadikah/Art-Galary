@@ -39,7 +39,7 @@ if(isLoading) return (
      user.posts &&
      user.posts.map((blog, index) => (
       
-    <Postify 
+    <Postify
       key={index}
       isUser={true}
       id={blog._id}

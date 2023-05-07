@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -14,6 +13,8 @@ import AddPost from '../../pages/AddPost';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../AuthContext';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import IconButton from '@mui/material/IconButton';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,12 +75,14 @@ export default function BasicTabs() {
           position: 'sticky',
           top:'0',
           zIndex: '1000',
+          color: 'white',
         }} just backgroudColor="green">
           <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="All Products" {...a11yProps(0)} />
-            <Tab label="Udate My Products" {...a11yProps(1)} />
+            <Tab label="Update My Products" {...a11yProps(1)} />
             <Tab label="My Products" {...a11yProps(2)} />
             <Tab label="Add Products" {...a11yProps(3)} />
+            <IconButton><AdminPanelSettingsIcon/></IconButton>
             <Box marginRight="auto">
               <Button variant='contained' color='warning' borderradius="20px" onClick={handleLogout}>
                 Log out

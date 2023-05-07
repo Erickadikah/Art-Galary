@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import {
   Box,
+  Card,
+  CardContent,
+  CardHeader,
   InputLabel,
   TextField,
   Typography,
@@ -26,7 +29,7 @@ const PostDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then((data) => console.log(data)).then(() => navigate('/UserPosts'));
+    sendRequest().then((data) => console.log(data)).then(() => navigate('/UserPosts')).then (() => window.location.reload());
   };
 
   const fetchDetails = async () => {
@@ -35,9 +38,9 @@ const PostDetails = () => {
       const { post: data } = res.data;
       setPost(data);
       setInputs({
-      title: data.title,
-      description: data.description,
-      price: data.price,
+        title: data.title,
+        description: data.description,
+        price: data.price,
       });
     } catch (error) {
       console.log(error);
@@ -69,60 +72,52 @@ const PostDetails = () => {
     <div>
       {post && (
         <form onSubmit={handleSubmit}>
-          <Box
-            border={1}
-            borderColor="#01BF71"
-            borderRadius={2.5}
-            display="flex"
-            margin="auto"
-            marginTop={5}
-            flexDirection="column"
-            width="100%"
-            padding={10}
-          >
-            <Typography
-              fontWeight="semi-bold"
-              padding={0}
-              variant="h5"
-              textAlign="center"
-            >
-              Edit Product
-            </Typography>
-            <InputLabel sx={{ mb: 1, mt: 2, fontSize: '24' }}>Title</InputLabel>
-            <TextField
-              margin="auto"
-              variant="outlined"
-              name="title"
-              onChange={handleChange}
-              value={inputs.title}
+          <Card sx={{ minWidth: 200, marginTop: 5 , padding: 10}}>
+            <CardHeader
+              title="Edit Product"
+              sx={{ textAlign: 'center', backgroundColor: '#01BF71' }}
+              titleTypographyProps={{ fontWeight: 'semi-bold' }}
             />
-            <InputLabel sx={{ mb: 1, mt: 2, fontSize: '24' }}>
-              Description
-            </InputLabel>
-            <TextField
-              margin="auto"
-              variant="outlined"
-              name="description"
-              onChange={handleChange}
-              value={inputs.description}
-            />
-            <InputLabel sx={{ mb: 1, mt: 2, fontSize: '24' }}>Price</InputLabel>
-            <TextField
-              margin="auto"
-              variant="outlined"
-              name="price"
-              onChange={handleChange}
-              value={inputs.price}
-            />
-            <Button
-              variant="contained"
-              color="success"
-              sx={{ mb: 1, mt: 2, fontSize: '24', borderRadius: 4 }}
-              type="submit"
-            >
-              Update Product
-            </Button>
-          </Box>
+            <CardContent>
+              <InputLabel sx={{ mb: 1, fontSize: 24 }}>Title</InputLabel>
+              <TextField
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="title"
+                onChange={handleChange}
+                value={inputs.title}
+              />
+              <InputLabel sx={{ mb: 1, fontSize: 24 }}>
+                Description
+              </InputLabel>
+              <TextField
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="description"
+                onChange={handleChange}
+                value={inputs.description}
+              />
+              <InputLabel sx={{ mb: 1, fontSize: 24 }}>Price</InputLabel>
+              <TextField
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="price"
+                onChange={handleChange}
+                value={inputs.price}
+              />
+              <Button
+                variant="contained"
+                color="success"
+                sx={{ mb: 1, mt: 2, fontSize: '24', borderRadius: 4 }}
+                type="submit"
+              >
+                Update Product
+              </Button>
+            </CardContent>
+          </Card>
         </form>
       )}
     </div>
@@ -130,3 +125,4 @@ const PostDetails = () => {
 };
 
 export default PostDetails;
+
