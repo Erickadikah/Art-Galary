@@ -56,7 +56,7 @@ const PostDetails = () => {
           title: inputs.title,
           description: inputs.description,
         }
-      ).catch(err => console.log(err));
+      ).catch(err => console.log(err)).alert("Product Updated");
       const data = await res.data;
       return data;
     } catch (error) {
@@ -125,4 +125,3 @@ const PostDetails = () => {
 };
 
 export default PostDetails;
-

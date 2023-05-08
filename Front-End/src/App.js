@@ -15,28 +15,39 @@ import PostDetails from "./pages/PostDetails";
 import UserPosts from "./pages/UserPosts";
 import AddPost from "./pages/AddPost";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 function App() {
   //Logged in user state and log out button functionality
   const isLoggedin = useSelector((state) => state.isLoggedin);
   console.log(isLoggedin);
+  useEffect(() => {
+    if(localStorage.getItem("token") && localStorage.getItem("userId")){
+      isLoggedin = true;
+    }
+  },[])
   return (
     <AuthProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+         { isLoggedin ? (
         <Route path="/signin" element={<SigninPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/posts" element={<Post />} />
-        <Route path="/PostDetails" element={<PostDetails />} />
-        <Route path="/UserPosts" element={<UserPosts />} />
-        <Route path="/LandingPage" element={<Landingpage />} />
-        <Route path="/myPosts/:id" element={<PostDetails />} />
-        <Route path="/posts/add" element={<AddPost />} />
-      </Routes>
-    </Router>
-    </AuthProvider>
+      ) : (
+        <>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/posts" element={<Post />} />
+          <Route path="/PostDetails" element={<PostDetails />} />
+          <Route path="/UserPosts" element={<UserPosts />} />
+          <Route path="/LandingPage" element={<Landingpage />} />
+          <Route path="/myPosts/:id" element={<PostDetails />} />
+          <Route path="/posts/add" element={<AddPost />} />
+        </>
+      )}
+    </Routes>
+  </Router>
+</AuthProvider>
   );
 }
 

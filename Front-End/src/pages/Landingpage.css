@@ -6,13 +6,20 @@ body {
     margin: 0;
     padding: 0;
 }
+@media screen and (max-width: 700px) {
+    .navbar {
+        display: block;
+    }
+    
 
-.Landingpage{
+  
+}
+/* .Landingpage{
     color: white;
     font-size: 10px;
-}
+} */
 
-.item {
+/* .item {
     height: 200px;
     width: 600px;
     background-color: azure;
@@ -26,17 +33,17 @@ body {
         height: 200px;
     }
         
-}
-
+} */
+/* 
 .top_icons {
     /* display: flex; */
-    justify-content: space-between;
+    /* justify-content: space-between;
     margin-top: 20px;
     margin-left: 100px;
     margin-right: 20px;
-}
+} */ 
 
-.button {
+/* .button {
   color: white;
   padding: 10px 20px;
   margin: 10px;
@@ -45,29 +52,29 @@ body {
   display: inline-flex;
   font-size: 16px;
   transition: background-color 0.3s ease;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #01BF71;
-}
+} */
 
-button:focus {
+/* button:focus {
   outline: none;
-}
+} */
 
-button svg {
+/* button svg {
   width: 150px;
   height: 30px;
   margin-right: 10px;
-}
+} */
 
-.my_buttons {
+/* .my_buttons {
     display: flex;
     margin-top: 200px;
     justify-content: space-between;
     color: white;
-}
-    @media only screen and (max-width: 600px) {
+} */
+    /* @media only screen and (max-width: 600px) {
       .my_buttons {
         flex-direction: column;
         align-items: center;
@@ -75,4 +82,4 @@ button svg {
       .button {
         margin-bottom: 10px 0;
       }
-}
+} */

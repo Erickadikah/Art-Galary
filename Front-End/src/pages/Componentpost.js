@@ -24,8 +24,11 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const Postify = ({ title, imageURL, userName, description, price, isUser, id }) => {
+  const [sellerInfo, setSellerInfo] = useState(null);
   console.log(title, isUser);
   const navigate = useNavigate();
   const deleteRequest = async () => {
@@ -70,6 +73,15 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
     window.open(facebookUrl);
     window.open(whatsappUrl);
     }
+  };
+  const fetchSellerInfo = async () => {
+    const res = await axios.get(`http://localhost:5000/api/user/${userName}`).catch(err => console.log(err));
+    const data = await res.data;
+    setSellerInfo(data);
+  };
+
+  const onChipClick = () => {
+    fetchSellerInfo();
   };
 
 
@@ -117,7 +129,14 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites" />
           <CardContent>
+            {sellerInfo && (
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {sellerInfo.name}: {sellerInfo.phone}
+            </Typography>
+          </CardContent>
             
+            )}
             <IconButton aria-label="add to favorites">
               <FavoriteIcon />
             </IconButton>
@@ -127,10 +146,12 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
           >
             <ShareIcon />
           </IconButton>
-
-            <ThemeProvider theme={theme}>
+            <Stack spacing={2}>
+            <ThemeProvider  theme={theme} onClick={ onChipClick }>
               <Chip icon={<MdPhone />} label="Call me" />
+              <Button variant="outlined">Buy Now</Button>
             </ThemeProvider>
+            </Stack>
           </CardContent>
           <IconButton
             aria-expanded={expanded}
