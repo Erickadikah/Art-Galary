@@ -29,7 +29,7 @@ const HeroSection = () => {
     <HeroContent >
         <HeroH1>Virtual Art selling Made Easy</HeroH1>
         <HeroP>
-          Sign up for a new account today and recieve $250 In
+          Sign up for a new account today and recieve $50 In
           credit towards your
           next payment.
         </HeroP>

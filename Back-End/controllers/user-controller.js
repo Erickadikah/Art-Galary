@@ -64,3 +64,16 @@ export const login = async (req, res, next) => {
     }
     return res.status(200).json({ message: "Login Succesfull", user: existingUser });
 };
+
+export const getUserById = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: "User Not Found" });
+        }
+        res.status(200).json({ user });
+    } catch (error) {
+        console.log(error);
+        
+    }
+};

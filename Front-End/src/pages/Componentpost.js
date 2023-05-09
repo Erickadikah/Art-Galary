@@ -87,7 +87,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
 
   return (
     <div>
-      <Card sx={{ display: 'grid', margin: 'auto', width: '85%', mt: 2, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
+      <Card sx={{ display: 'grid', margin: 'auto', width: '80%', mt: 2, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
         {isUser && (
           <Box sx={{ display: 'flex'}}>
           <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}><FilterDramaIcon color="inhert"/>
@@ -98,11 +98,11 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
           <CardHeader
           avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">{userName}</Avatar>}
           title={title}
-          subheader="September 14, 2016"
+          subheader={new Date().toLocaleDateString('en-KE', {timeZone: 'Africa/Nairobi', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).replace('PM', 'pm').replace('AM', 'am')}
         />
         <CardMedia
           component="img"
-          height="180"
+          height="300"
           image={imageURL}
         />
         <CardContent>

@@ -16,6 +16,7 @@ import UserPosts from "./pages/UserPosts";
 import AddPost from "./pages/AddPost";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -31,20 +32,16 @@ function App() {
     <AuthProvider>
     <Router>
       <Routes>
-         { isLoggedin ? (
         <Route path="/signin" element={<SigninPage />} />
-      ) : (
-        <>
+        <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/" element={<Home />} />
           <Route path="/posts" element={<Post />} />
           <Route path="/PostDetails" element={<PostDetails />} />
           <Route path="/UserPosts" element={<UserPosts />} />
           <Route path="/LandingPage" element={<Landingpage />} />
           <Route path="/myPosts/:id" element={<PostDetails />} />
           <Route path="/posts/add" element={<AddPost />} />
-        </>
-      )}
+          <Route path="/Profile" element={<Profile />} />
     </Routes>
   </Router>
 </AuthProvider>

@@ -16,6 +16,7 @@ import {
 } from '../Signin/SigninElements';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Send } from '@mui/icons-material';
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -44,13 +45,15 @@ const SignUp = () => {
   } catch (error) {
     console.log(error);
     navigate('/Landingpage');
+    console.log('navigate to landing page');
   }
 };
   const handleSignUp = async (e) => {
     e.preventDefault();
     console.log(inputs);
     const data = await sendRequest();
-    if (data && data.status === 'success') {
+    const isSuccess = await sendRequest();
+    if (isSuccess) {
         navigate('/Landingpage');
       console.log('navigate to landing page');
     }

@@ -4,7 +4,7 @@ import Postify from './Componentpost';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 const UserPosts = () => {
-   const [user, setUser] = useState();  
+  const [user, setUser] = useState();  
   const id = localStorage.getItem('userId');
   const [isLoading,setisLoading] = useState(false);
 
@@ -45,7 +45,7 @@ if(isLoading) return (
       id={blog._id}
       title={blog.title}
       price={blog.price}
-description={blog.description && blog.description.substring(0, 700)}
+      description={blog.description && blog.description.substring(0, 700)}
       imageURL={blog.image}
       userName={user.name}
     />
