@@ -87,7 +87,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
 
   return (
     <div>
-      <Card sx={{ display: 'grid', margin: 'auto', width: '80%', mt: 2, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
+      <Card sx={{ display: 'flex-direction', margin: 'auto', width: '70%',mt: 1, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
         {isUser && (
           <Box sx={{ display: 'flex'}}>
           <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}><FilterDramaIcon color="inhert"/>
@@ -149,7 +149,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
             <Stack spacing={2}>
             <ThemeProvider  theme={theme} onClick={ onChipClick }>
               <Chip icon={<MdPhone />} label="Call me" />
-              <Button variant="outlined">Buy Now</Button>
+              <Button variant="outlined" onClick="/Home">ORDER NOW</Button>
             </ThemeProvider>
             </Stack>
           </CardContent>

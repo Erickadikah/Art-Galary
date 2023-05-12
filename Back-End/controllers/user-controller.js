@@ -77,3 +77,37 @@ export const getUserById = async (req, res, next) => {
         
     }
 };
+
+export const logout = async (req, res, nex) => {
+    try {
+        req.session.destroy();
+
+        // seding a successful response
+        res.status(200).json({message: 'Logout successfull'});
+    } catch (error) {
+
+    }
+};
+export const uploadProfilePicture = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User Not Found" });
+    }
+
+    // check if a file was uploaded
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    // save the filename to the user document
+    user.profilePicture = req.file.filename;
+    await user.save();
+
+    res.status(200).json({ message: "Profile picture uploaded" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};

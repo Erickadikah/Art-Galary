@@ -137,3 +137,34 @@ export const getByUserId = async (req, res, next) => {
     }
     return res.status(200).json({user: userPosts})
 }
+
+export const uploadFile = async (req, res, next) => {
+    console.log(req.file)
+
+    const avatar=req.body.avatar
+    // const userId = req.body.id;
+    const userId  = req.body.id;
+    // let userPosts;
+    // multer saves file -> url
+
+
+    console.log(req.body)
+    //
+    try {
+        // const userid = req.param.id;
+        // const avatar = req.file.path;
+        let user = await User.findById(userId)
+        if(user){
+            // user.profilePicture.data = avatar
+            // user.profilePicture.type = "image/png"
+            await user.save()
+            return res.status(200).json({message: "File Uploaded"})
+        }else{
+            return res.status(404).json({message: "User Not Found"})
+        }
+    }
+    catch (err) {
+    console.log(err)
+    return res.status(500).json({message: "Server Error"})
+    }
+    };

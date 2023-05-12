@@ -16,6 +16,8 @@ import AuthContext from '../AuthContext';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import IconButton from '@mui/material/IconButton';
 import Profile from '../../pages/Profile';
+import { useState } from 'react';
+import axios from 'axios';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,12 +62,22 @@ export default function BasicTabs() {
   const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // Clear the authentication state
-    setIsAuthenticated(false);
-    
-    // Redirect the user to the login page
-    navigate('/Signin');
+  const handleLogout = async () => {
+    console.log('test logout');
+    try {
+      // Send a logout request to the server
+      await axios.post('http://localhost:5000/api/user/logout');
+
+      // Clear any user-related data
+      // setIsLoggedIn(false);
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('authToken');
+
+      // Redirect the user to the login page
+      navigate('/SignUp');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

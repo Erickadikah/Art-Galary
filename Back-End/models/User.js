@@ -17,6 +17,10 @@ const UserSchema = new Schema({
         required: true,
         minlength: 6
     },
+    profilePicture: {
+        data: Buffer,
+        type: String
+    },
     posts: [ {type: mongoose.Types.ObjectId, ref: 'Post', required: true}]
 });
 
