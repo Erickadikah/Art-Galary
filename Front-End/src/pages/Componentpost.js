@@ -87,7 +87,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
 
   return (
     <div>
-      <Card sx={{ display: 'flex-direction', margin: 'auto', width: '70%',mt: 1, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
+      <Card sx={{ display: 'grid', margin: 'auto', width: '70%',mt: 1, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
         {isUser && (
           <Box sx={{ display: 'flex'}}>
           <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}><FilterDramaIcon color="inhert"/>

@@ -14,26 +14,26 @@ import Post from "./pages/Post";
 import PostDetails from "./pages/PostDetails";
 import UserPosts from "./pages/UserPosts";
 import AddPost from "./pages/AddPost";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Profile from "./pages/Profile";
+import { useState } from "react";
 
 
 function App() {
-  //Logged in user state and log out button functionality
-  const isLoggedin = useSelector((state) => state.isLoggedin);
-  console.log(isLoggedin);
+  const [isLoggedin, setIsLoggedin] = useState(false);
+
   useEffect(() => {
-    if(localStorage.getItem("token") && localStorage.getItem("userId")){
-      isLoggedin = true;
+    if (localStorage.getItem("token") && localStorage.getItem("userId")) {
+      setIsLoggedin(true);
     }
-  },[])
+  }, []);
   return (
     <AuthProvider>
     <Router>
       <Routes>
         <Route path="/signin" element={<SigninPage />} />
-          <Route path="/Home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/posts" element={<Post />} />
           <Route path="/PostDetails" element={<PostDetails />} />
@@ -43,6 +43,7 @@ function App() {
           <Route path="/posts/add" element={<AddPost />} />
           <Route path="/Profile" element={<Profile />} />
     </Routes>
+    {isLoggedin ? <p>Wecome back</p> : null}
   </Router>
 </AuthProvider>
   );
