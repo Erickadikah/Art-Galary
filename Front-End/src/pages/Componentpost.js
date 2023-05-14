@@ -86,10 +86,14 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
 
 
   return (
+    <>
     <div>
-      <Card sx={{ display: 'grid', margin: 'auto', width: '70%',mt: 1, padding: 2, ':hover': { boxShadow: '5px 5px 5px #ccc' } }}>
+      <Card sx={{ display: 'column',margin: 'auto', width: '300px', height: '5rm', gap:'30rm', mt: 2, padding: 1, ':hover': { boxShadow: '5px 5px 5px #ccc' }, '@media screen and (min-width: 768px)': { display: 'flex-row' } 
+    }}>
         {isUser && (
-          <Box sx={{ display: 'flex'}}>
+          <Box sx={{ 
+        display: 'flex', 
+    }}>
           <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}><FilterDramaIcon color="inhert"/>
           </IconButton>
           <IconButton onClick={handleDelete}><DeleteForeverIcon color="warning"/></IconButton>
@@ -116,7 +120,6 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
               maxWidth: '600px',
             }}
           >
-            {description && description}
             <Typography>$: <b>{price}</b></Typography>
           </div>
         </CardContent>
@@ -165,6 +168,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
         
       </Card>
     </div>
+    </>
   );
 };
 

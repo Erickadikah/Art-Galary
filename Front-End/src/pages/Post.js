@@ -27,25 +27,27 @@ const PostComp = () => {
 
   console.log(posts);
   if(isLoading) return (
-    <Box sx={{ display: 'flex' ,justifyContent:'center',padding:'2rem'}}>
+    <Box>
         <CircularProgress />
       </Box>
   )
 
   return (
-    <div>
-     {posts && posts.map((post, index) => (
-        <Postify
-        id={post._id}
-        isUser={localStorage.getItem("userId") === post.user._id}
-        imageURL={post.image}
-        description={post.description && post.description.substring(0, 100)} 
-        userName={post.user && post.user.name} 
-        price={post.price} 
-        title={post.title}
-        />
-      ))}
-    </div>
+   <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px'}}>
+  {posts && posts.map((post, index) => (
+    <Postify
+      id={post._id}
+      isUser={localStorage.getItem("userId") === post.user._id}
+      imageURL={post.image}
+      description={post.description && post.description.substring(0, 100)} 
+      userName={post.user && post.user.name} 
+      price={post.price} 
+      title={post.title}
+      key={index}
+      style={{ flexBasis: 'calc(100% / 2)', maxWidth: 'calc(100% /2)', margin: '10px' }}
+    />
+  ))}
+</div>
   );
 };
 

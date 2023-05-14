@@ -33,7 +33,7 @@ if(isLoading) return (
     </Box>
 )
   return (
-   <div>
+   <div style={{display: 'flex', flexWrap:'wrap', gap:'20px', justifyContent: 'center',}}>
    {" "}
    {user &&
      user.posts &&
@@ -48,6 +48,7 @@ if(isLoading) return (
       description={blog.description && blog.description.substring(0, 700)}
       imageURL={blog.image}
       userName={user.name}
+      style={{ flexBasis: 'calc(100% / 2)', maxWidth: 'calc(100% /2)', margin: '10px' }}
     />
   
    ))}

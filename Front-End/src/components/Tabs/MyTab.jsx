@@ -61,20 +61,21 @@ export default function BasicTabs() {
 
   const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogout = async () => {
     console.log('test logout');
     try {
       // Send a logout request to the server
-      await axios.post('http://localhost:5000/api/user/logout');
+      await axios.get('http://localhost:5000/api/user/logout');
 
       // Clear any user-related data
-      // setIsLoggedIn(false);
-      localStorage.removeItem('user_id');
+      setIsLoggedIn(false);
+      localStorage.removeItem('user._id');
       localStorage.removeItem('authToken');
+      navigate('/SignIn');
 
       // Redirect the user to the login page
-      navigate('/SignUp');
     } catch (error) {
       console.log(error);
     }
@@ -83,14 +84,16 @@ export default function BasicTabs() {
   return (
     <>
       
-      <Box marginLeft="auto" marginRight="auto" >
+      <Box style={{marginLeft: 'auto', marginRight:'auto'}}>
         <Box display="flex" style={{
           position: 'sticky',
           top:'0',
-          zIndex: '1000',
-          color: 'white',
-        }} just backgroudColor="green">
-          <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example">
+          zIndex: '10000',
+          color: 'black',
+          marginRight: 'auto',
+          marginLeft: 'auto',
+        }} adjust backgroudColor="green">
+          <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example" style={{ marginRight:'auto', marginLeft:'auto'}}>
             <Tab label="All Products" {...a11yProps(0)} />
             <Tab label="Update My Products" {...a11yProps(1)} />
             <Tab label="My Products" {...a11yProps(2)} />

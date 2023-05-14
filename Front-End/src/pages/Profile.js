@@ -81,6 +81,10 @@ const UserProfile = () => {
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
+    if (file.size > 10 * 1024 * 1024) {
+      console.log("File too large")
+      return
+    }
     const base64 = await convertToBase64(file)
     setProfileImage({...ProfileImage, myFile : base64 })
   }

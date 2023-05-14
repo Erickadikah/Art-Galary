@@ -29,11 +29,7 @@ const Landingpage = () => {
  {
   // tabs section starts here
  }
-<div style={{
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  position: 'sticky'
-}}>
+<div className='myTab'>
 <BasicTabs/>
 </div>
  {
