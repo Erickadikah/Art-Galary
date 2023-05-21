@@ -104,7 +104,7 @@ const UserProfile = () => {
       <CardContent>
         {user ? (
           <div style={{color: 'black', alignItems: 'center'}}>
-          <Avatar src={ ProfileImage.myFile || user.avatarUrl} sx={{ width: 200, height: 200, margin: '0 auto' }} />
+          <Avatar src={ ProfileImage.myFile || user.avatarUrl} sx={{ width: 150, height: 200, margin: '0 auto' }} />
             <Typography variant="h4" sx={{ textAlign: 'center'}}>{user.name}</Typography>
             <Typography variant="h6" sx={{ textAlign: 'center'}}>{user.email}</Typography>
             <input type="file" name="profile" accept="image/*" onChange={ (e) => handleFileUpload(e)} />
