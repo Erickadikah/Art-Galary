@@ -8,13 +8,13 @@ import PostComp from '../../pages/Post';
 import PostDetails from '../../pages/PostDetails';
 import UserPosts from '../../pages/UserPosts';
 import { Button } from '@mui/material';
-import { AppBar } from '@mui/material';
+// import { AppBar } from '@mui/material';
 import AddPost from '../../pages/AddPost';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../AuthContext';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import IconButton from '@mui/material/IconButton';
+// import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+// import IconButton from '@mui/material/IconButton';
 import Profile from '../../pages/Profile';
 import { useState } from 'react';
 import axios from 'axios';
@@ -59,7 +59,7 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
-  const { setIsAuthenticated } = useContext(AuthContext);
+  // const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
