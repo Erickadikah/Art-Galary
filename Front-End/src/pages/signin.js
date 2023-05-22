@@ -14,12 +14,12 @@ import {
   FormButton,
   Text
 } from '../Signin/SigninElements';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { Send } from '@mui/icons-material';
+// import { Send } from '@mui/icons-material';
 
 const SignUp = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
@@ -51,7 +51,6 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     console.log(inputs);
-    const data = await sendRequest();
     const isSuccess = await sendRequest();
     if (isSuccess) {
         navigate('/Landingpage');

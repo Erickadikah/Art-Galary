@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, CircularProgress, Card, CardContent, Typography, Avatar, Button } from '@mui/material';
 // import UserPosts from '../components/UserPosts';
-import cors from 'cors'
 import UserPosts from './UserPosts';
 const UserProfile = () => {
   const [ProfileImage, setProfileImage] = useState({ myFile : "" })
@@ -12,7 +11,7 @@ const UserProfile = () => {
   // const [userAvatar, setUserAvatar] = useState(null);
   // const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
-  const sendRequest = async () => {
+  const sendRequest = useCallback(async () => {
     try {
       setIsLoading(true);
       const res = await axios.get(`http://localhost:5000/api/user/${id}`);
@@ -24,11 +23,11 @@ const UserProfile = () => {
       setIsLoading(false);
       return null;
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     sendRequest().then((data) => setUser(data.user));
-  }, []);
+  }, [sendRequest]);
 
   if (isLoading) {
     return (

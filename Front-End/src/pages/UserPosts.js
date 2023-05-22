@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import Postify from './Componentpost';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -8,24 +8,23 @@ const UserPosts = () => {
   const id = localStorage.getItem('userId');
   const [isLoading,setisLoading] = useState(false);
 
-  const sendRequest = async () => {
-    try {
-      setisLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/post/user/${id}`)
-      .catch(err => console.log(err));
-      const data = await res.data;
-      setisLoading(false)
-      return data;
-    } catch (error) {
-      console.log(error);
-      setisLoading(false);
-      return null;
-    }
-  };
+const sendRequest = useCallback(async () => {
+  try {
+    setisLoading(true);
+    const res = await axios.get(`http://localhost:5000/api/post/user/${id}`).catch(err => console.log(err));
+    const data = await res.data;
+    setisLoading(false);
+    return data;
+  } catch (error) {
+    console.log(error);
+    setisLoading(false);
+    return null;
+  }
+}, [id]);
 
-  useEffect(() => {
-    sendRequest().then((data) => setUser(data.user));
-},[]);
+useEffect(() => {
+  sendRequest().then((data) => setUser(data.user));
+}, [sendRequest]);
 console.log(user);
 if(isLoading) return (
   <Box sx={{ display: 'flex' ,justifyContent:'center',padding:'2rem'}}>

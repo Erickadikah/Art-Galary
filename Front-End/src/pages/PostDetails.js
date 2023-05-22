@@ -1,23 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
-  Box,
   Card,
   CardContent,
   CardHeader,
   InputLabel,
   TextField,
-  Typography,
   Button,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const PostDetails = () => {
   const navigate = useNavigate();
-  const [post, setPost] = useState(null);
+  const [post] = useState(null);
   const { id } = useParams();
   const [inputs, setInputs] = useState({});
+  const [setIsLoading] = useState(false);
+  const [setUser] = useState(null);
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -30,21 +30,6 @@ const PostDetails = () => {
     e.preventDefault();
     console.log(inputs);
     sendRequest().then((data) => console.log(data)).then(() => navigate('/UserPosts')).then (() => window.location.reload());
-  };
-
-  const fetchDetails = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/api/post/${id}`);
-      const { post: data } = res.data;
-      setPost(data);
-      setInputs({
-        title: data.title,
-        description: data.description,
-        price: data.price,
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const sendRequest = async () => {
@@ -64,9 +49,22 @@ const PostDetails = () => {
     }
   };
 
-  useEffect(() => {
-    fetchDetails();
-  }, [id]);
+useEffect(() => {
+  const fetchDetails = async () => {
+    try {
+      setIsLoading(true);
+      const res = await axios.get(`http://localhost:5000/api/user/${id}`);
+      const data = await res.data;
+      setUser(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  fetchDetails();
+}, [id, setIsLoading, setUser]);
 
   return (
     <div>
