@@ -10,9 +10,9 @@ import UserPosts from '../../pages/UserPosts';
 import { Button } from '@mui/material';
 // import { AppBar } from '@mui/material';
 import AddPost from '../../pages/AddPost';
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../AuthContext';
+// import AuthContext from '../AuthContext';
 // import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 // import IconButton from '@mui/material/IconButton';
 import Profile from '../../pages/Profile';
@@ -61,7 +61,7 @@ export default function BasicTabs() {
 
   // const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [setIsLoggedIn] = useState(false);
 
   const handleLogout = async () => {
     console.log('test logout');

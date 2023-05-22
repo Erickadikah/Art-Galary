@@ -17,7 +17,7 @@ import BasicTabs from '../components/Tabs/MyTab';
 const Landingpage = () => {
   const isLoggedin = useSelector((state) => state.isLoggedin);
   // console.log(isLoggedin);
-  const [value, setValue] = React.useState("1");
+  const [setValue] = React.useState("1");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -75,4 +75,5 @@ const Landingpage = () => {
 
   );
   };
+  
 export default Landingpage;

@@ -8,7 +8,6 @@ import { Card,
   CardActions, 
   Avatar, 
   IconButton, 
-  Typography, 
   Box,
   Button,
   TextField
