@@ -32,7 +32,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
   console.log(title, isUser);
   const navigate = useNavigate();
   const deleteRequest = async () => {
-    const res = await axios.delete(`http://localhost:5000/api/post/${id}`).catch(err => console.log(err));
+    const res = await axios.delete(`https://art-gallery-api-g2ca.onrender.com/api/post/${id}`).catch(err => console.log(err));
     const data = await res.data;
     return data;
   }
