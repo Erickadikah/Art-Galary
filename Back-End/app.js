@@ -43,11 +43,11 @@ app.use(router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use( postRouter);
-
+// process.env
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://erickadikah2030:7IxsoEWfMRZTrtGC@cluster0.po22n0u.mongodb.net/ArtGalary'
-).then(() => app.listen(5000)).then(() => console.log('Connected to database')
+).then(() => app.listen(process.env.PORT || 5000)).then(() => console.log('Connected to database')
 ).catch(err => console.log(err));
 
 //multer storage changeble
