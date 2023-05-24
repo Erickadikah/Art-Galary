@@ -88,7 +88,20 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
   return (
     <>
     <div>
-      <Card sx={{ display: 'column',margin: 'auto', width: '300px', height: '5rm', gap:'30rm', mt: 2, padding: 1, ':hover': { boxShadow: '5px 5px 5px #ccc' }, '@media screen and (min-width: 768px)': { display: 'flex-row' } 
+      <Card  sx={{
+      display: 'column',
+      margin: 'auto',
+      width: '300px',
+      height: '5rm',
+      gap: '30rm',
+      mt: 2,
+      padding: 1,
+      ':hover': { boxShadow: '5px 5px 5px #ccc' },
+      '@media screen and (min-width: 768px)': {
+        display: 'flex-row',
+        width: '600px',  // Increase width at media query
+        height: '10rm',  // Increase height at media query
+      },
     }}>
         {isUser && (
           <Box sx={{ 
