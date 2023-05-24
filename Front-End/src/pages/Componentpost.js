@@ -75,7 +75,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
     }
   };
   const fetchSellerInfo = async () => {
-    const res = await axios.get(`http://localhost:5000/api/user/${userName}`).catch(err => console.log(err));
+    const res = await axios.get(`https://art-gallery-api-g2ca.onrender.com/api/user/${userName}`).catch(err => console.log(err));
     const data = await res.data;
     setSellerInfo(data);
   };

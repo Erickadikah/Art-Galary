@@ -35,7 +35,7 @@ const SignUp = () => {
   };
   const sendRequest = async (e) => {
   try {
-    const res = await axios.post("http://localhost:5000/api/user/login", {
+    const res = await axios.post("https://art-gallery-api-g2ca.onrender.com/api/user/login", {
       email: inputs.email,
       password: inputs.password
     });

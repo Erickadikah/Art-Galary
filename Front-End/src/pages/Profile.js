@@ -14,7 +14,7 @@ const UserProfile = () => {
   const sendRequest = useCallback(async () => {
     try {
       setIsLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/user/${id}`);
+      const res = await axios.get(`https://art-gallery-api-g2ca.onrender.com/api/user/${id}`);
       const data = await res.data;
       setIsLoading(false);
       return data;
@@ -67,7 +67,7 @@ const UserProfile = () => {
   //     setIsLoading(false);
   //   }
   // };
-  const url = "http://localhost:5000/uploads"
+  const url = "https://art-gallery-api-g2ca.onrender.com/uploads"
 
   const createProfile = async (newImage) => {
     try {

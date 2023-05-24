@@ -11,7 +11,7 @@ const UserPosts = () => {
 const sendRequest = useCallback(async () => {
   try {
     setisLoading(true);
-    const res = await axios.get(`http://localhost:5000/api/post/user/${id}`).catch(err => console.log(err));
+    const res = await axios.get(`https://art-gallery-api-g2ca.onrender.com/api/post/user/${id}`).catch(err => console.log(err));
     const data = await res.data;
     setisLoading(false);
     return data;

@@ -35,7 +35,7 @@ const PostDetails = () => {
   const sendRequest = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/post/update/${id}`,
+        `https://art-gallery-api-g2ca.onrender.com/api/post/update/${id}`,
         {
           price: inputs.price,
           title: inputs.title,
@@ -53,7 +53,7 @@ useEffect(() => {
   const fetchDetails = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/user/${id}`);
+      const res = await axios.get(`https://art-gallery-api-g2ca.onrender.com/api/user/${id}`);
       const data = await res.data;
       setUser(data);
       setIsLoading(false);

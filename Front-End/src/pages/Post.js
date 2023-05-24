@@ -12,7 +12,7 @@ const PostComp = () => {
     const sendRequest = async () => {
       try {
         setisLoading(true);
-        const response = await axios.get('http://localhost:5000/api/posts');
+        const response = await axios.get('https://art-gallery-api-g2ca.onrender.com/api/posts');
         const data = await response.data;
         setPosts(data.posts);
         setisLoading(false);
