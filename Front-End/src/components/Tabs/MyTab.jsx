@@ -106,6 +106,7 @@ export default function BasicTabs() {
         }} adjust backgroudColor="green">
           <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example" style={{ marginRight:'auto', marginLeft:'auto'}}>
             <Tab label="All Products" {...a11yProps(0)} />
+            <Tab label="Update Product"{...a11yProps(1)} />
             <Tab label="My Products" {...a11yProps(2)} />
             <Tab label="Add Products" {...a11yProps(3)} />
             <Tab label="Admin Panel" {...a11yProps(4)} />
