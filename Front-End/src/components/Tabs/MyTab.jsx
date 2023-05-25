@@ -96,17 +96,16 @@ export default function BasicTabs() {
           marginLeft: 'auto',
           '@media screen and (max-width: 600px)': {
       width: '80%',  // Adjust the width for smaller screens
-    },
-    '@media screen and (min-width: 601px) and (max-width: 1200px)': {
-      width: '60%',  // Adjust the width for medium screens
-    },
-    '@media screen and (min-width: 1201px)': {
-      width: '40%',
-    },
+        },
+        '@media screen and (min-width: 600px) and (max-width: 1200px)': {
+          width: '60%',  // Adjust the width for medium screens
+        },
+        '@media screen and (min-width: 1201px)': {
+          width: '30%',
+        },
         }} adjust backgroudColor="green">
           <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example" style={{ marginRight:'auto', marginLeft:'auto'}}>
             <Tab label="All Products" {...a11yProps(0)} />
-            <Tab label="Update My Products" {...a11yProps(1)} />
             <Tab label="My Products" {...a11yProps(2)} />
             <Tab label="Add Products" {...a11yProps(3)} />
             <Tab label="Admin Panel" {...a11yProps(4)} />
