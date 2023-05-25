@@ -1,76 +1,70 @@
-import React from 'react';
-import './Landingpage.css';
-// import { AiOutlinePlus } from "react-icons/ai";
-// import { AiFillDollarCircle } from "react-icons/ai";
-// import { AiOutlineShoppingCart } from "react-icons/ai";
-// import { AiOutlineRise } from "react-icons/ai";
+import { useState } from 'react';
 import {
-  Box, 
-  Toolbar, 
-  Button,
-} from '@mui/material';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+  AppShell,
+  Navbar,
+  Header,
+  Footer,
+  Aside,
+  Text,
+  MediaQuery,
+  Burger,
+  useMantineTheme,
+} from '@mantine/core';
 import BasicTabs from '../components/Tabs/MyTab';
-
+// import AddPost from './AddPost';
 
 const Landingpage = () => {
-  const isLoggedin = useSelector((state) => state.isLoggedin);
-  // console.log(isLoggedin);
-  // const [setValue] = React.useState("1");
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
   return (
-    <>
-    
-    <Toolbar>
-    
- {
-  // tabs section starts here
- }
-<div className='myTab'>
-<BasicTabs/>
-</div>
- {
-  // End of tabs section TAB
- }
-
-    <Box> {isLoggedin && (
-    <Button variant="contained" LinkComponent={Link} to="/signin"
-    style={{  marginRight: 'auto', borderRadius: '10px'}}
-    color="#01BF71">
-    Log out
-    </Button> )}
-    </Box>
-    </Toolbar>
-   {/* // <div>
-    // <div className='my_buttons' >
-    // <div>
-    // <button Link to="/signsin">
-    // <AiOutlineShoppingCart style={{ fontSize: '2rem' }}/>
-    // </button>
-    // <p>Manage Orders</p>
-    // </div>
-    // <div>
-    // <button>
-    // <AiOutlinePlus style={{ fontSize: '2rem' }}/>
-    // </button>
-    // <p>Add Products</p>
-    // </div>
-    // <div>
-    // <button>
-    // <AiFillDollarCircle  style={{ fontSize: '2rem' }}/>
-    // </button>
-    // <p>Increase Sales</p>
-    // </div>
-    // <div>
-    // <button>
-    // <AiOutlineRise style={{ fontSize: '2rem' }}/>
-    // </button>
-    // <p> Your Growth</p>
-    // </div>
-    // </div>  */}
-    </>
-
-  );
-  };
+    <AppShell
+      styles={{
+        main: {
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        },
+      }}
+      navbarOffsetBreakpoint="sm"
+      asideOffsetBreakpoint="sm"
+      navbar={
+        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
+          <Text>Application navbar</Text>
+          <Navbar.Section>
+          <Text>AddPost</Text>
   
+          </Navbar.Section>
+          
+        </Navbar>
+      }
+      aside={
+        <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+          <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+          </Aside>
+          </MediaQuery>
+      }
+      footer={
+        <Footer height={60} p="md">
+          Application footer
+        </Footer>
+      }
+      header={
+        <Header height={{ base: 50, md: 70 }} p="md">
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size="sm"
+                color={theme.colors.gray[6]}
+                mr="xl"
+              />
+            </MediaQuery>
+          </div>
+        </Header>
+      }
+    >
+    <BasicTabs/>
+    </AppShell>
+  );
+}
+
 export default Landingpage;
