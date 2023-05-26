@@ -5,11 +5,12 @@ import {
   Header,
   Footer,
   Aside,
-  Text,
   MediaQuery,
   Burger,
   useMantineTheme,
+  Stack
 } from '@mantine/core';
+
 import BasicTabs from '../components/Tabs/MyTab';
 // import AddPost from './AddPost';
 
@@ -27,12 +28,12 @@ const Landingpage = () => {
       asideOffsetBreakpoint="sm"
       navbar={
         <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-          <Text>Application navbar</Text>
           <Navbar.Section>
-          <Text>AddPost</Text>
-  
           </Navbar.Section>
-          
+           <Navbar.Section>
+          <Stack justify="center" spacing={50}>
+          </Stack>
+          </Navbar.Section>
         </Navbar>
       }
       aside={
@@ -42,8 +43,8 @@ const Landingpage = () => {
           </MediaQuery>
       }
       footer={
-        <Footer height={60} p="md">
-          Application footer
+        <Footer height={40} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} p="md">
+         Art Galary © {new Date().getFullYear()}
         </Footer>
       }
       header={

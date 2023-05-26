@@ -99,7 +99,7 @@ const Postify = ({ title, imageURL, userName, description, price, isUser, id }) 
       ':hover': { boxShadow: '5px 5px 5px #ccc' },
       '@media screen and (min-width: 768px)': {
         display: 'flex-row',
-        width: '600px',  // Increase width at media query
+        width: '400px',  // Increase width at media query
         height: '10rm',  // Increase height at media query
       },
     }}>
