@@ -3,6 +3,7 @@ import {
   AppShell,
   Navbar,
   Header,
+  Text,
   Footer,
   Aside,
   MediaQuery,
@@ -10,9 +11,11 @@ import {
   useMantineTheme,
   Stack
 } from '@mantine/core';
-
+import { IconUser, IconHome2, IconSettings, IconLogout} from '@tabler/icons-react';
 import BasicTabs from '../components/Tabs/MyTab';
-// import AddPost from './AddPost';
+import { Link} from 'react-router-dom';
+// import {AddPost} from '../pages/AddPost';
+// import AddPost from '../pages/AddPost';
 
 const Landingpage = () => {
   const theme = useMantineTheme();
@@ -33,8 +36,34 @@ const Landingpage = () => {
            <Navbar.Section>
           <Stack justify="center" spacing={50}>
           </Stack>
+          <div style={{display:'flex', flexDirection: "column", gap: '50px'}}>
+          <Text component={Link} variant="link" to="/AddPost">
+          Add Products
+          </Text>
+          <Text component={Link} variant="link" to="/UserPosts">
+          My Products
+          </Text>
+          <Text component={Link} variant="link" to="/Landingpage">
+          <IconHome2/>
+          Home
+          </Text>
+          <Text style={{gap: '10px'}} component={Link} variant="link" to="/Profile">
+          <IconSettings/>
+          Settings
+          </Text>
+           <Text style={{gap: '10px'}} component={Link} variant="link" to="/Profile">
+           <IconUser/>
+          Profile
+          </Text>
+          </div>
+          <div style={{ borderTop: "1px solid", marginTop: "150px" }}>
+        <Text style={{gap: '10px', marginLeft: '50px', Top: '150px'}} component={Link} variant="link" to="/">
+           <IconLogout stroke={1.5} marginRight={10}/>
+           Logout
+          </Text>
+          </div>
           </Navbar.Section>
-        </Navbar>
+          </Navbar>
       }
       aside={
         <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>

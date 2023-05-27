@@ -6,18 +6,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PostComp from '../../pages/Post';
 // import PostDetails from '../../pages/PostDetails';
-import UserPosts from '../../pages/UserPosts';
-// import { Button } from '@mui/material';
-// import { AppBar } from '@mui/material';
+// import UserPosts from '../../pages/UserPosts';
 import AddPost from '../../pages/AddPost';
-// import { useContext } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import AuthContext from '../AuthContext';
-// import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-// import IconButton from '@mui/material/IconButton';
-import Profile from '../../pages/Profile';
-// import { useState } from 'react';
-// import axios from 'axios';
+// import Profile from '../../pages/Profile';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -106,9 +97,7 @@ export default function BasicTabs() {
         }} adjust backgroudColor="green">
           <Tabs textColor="inherit" value={value} onChange={handleChange} aria-label="basic tabs example" style={{ marginRight:'auto', marginLeft:'auto'}}>
             <Tab label="All Products" {...a11yProps(0)} /> 
-            <Tab label="My Products" {...a11yProps(1)} />
-            <Tab label="Add Products" {...a11yProps(2)} />
-            <Tab label="Admin Panel" {...a11yProps(3)} />
+            <Tab label="Add Products" {...a11yProps(1)} />
             <Box marginRight="auto">
             </Box>
           </Tabs>
@@ -117,15 +106,7 @@ export default function BasicTabs() {
           <PostComp/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <UserPosts/>
-        </TabPanel>
-        <TabPanel value={value} index={2}>
           <AddPost/>
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-        <Profile />
         </TabPanel>
       </Box>
     </>
