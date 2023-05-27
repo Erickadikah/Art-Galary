@@ -55,12 +55,10 @@ const Landingpage = () => {
            <IconUser/>
           Profile
           </Text>
-          </div>
-          <div style={{ borderTop: "1px solid", marginTop: "150px" }}>
-        <Text style={{gap: '10px', marginLeft: '50px', Top: '150px'}} component={Link} variant="link" to="/">
-           <IconLogout stroke={1.5} marginRight={10}/>
-           Logout
-          </Text>
+          <Text style={{gap: '10px', Top: '150px'}} component={Link} variant="link" to="/">
+             <IconLogout stroke={1.5} marginRight={10}/>
+             Logout
+            </Text>
           </div>
           </Navbar.Section>
           </Navbar>
