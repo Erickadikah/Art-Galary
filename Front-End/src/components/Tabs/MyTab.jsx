@@ -79,7 +79,7 @@ export default function BasicTabs() {
        marginRight:'auto'
       }}>
         <Box display="flex" style={{
-          position: 'sticky',
+          // position: 'sticky',
           top:'0',
           zIndex: '10000',
           color: 'black',
