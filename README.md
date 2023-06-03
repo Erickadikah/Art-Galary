@@ -42,5 +42,39 @@ As a user of the web application you will be able to:
 
 ## Getting started
 
+run npm install to install all dependencies
+
+run npm start to start the server
+
+## Deployment
+
+Front-End: https://art-galary.netlify.app/
+
+Back-End: https://art-galary.herokuapp.com/
+
+## Built With
+
+* [React](https://reactjs.org/) - The JavaScript framework used
+* [Redux](https://redux.js.org/) - State Management
+* [Nodejs](https://nodejs.org/en/) - Runtime Environment
+* [ExpressJs](https://expressjs.com/) - Web Application Framework
+* [MongoDB](https://www.mongodb.com/) - Database Management System
+
+## Contributors
+
+* **Erick Adikah**
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
 ### Prerequisites
 
+You need the following installed on your machine
+- Node.js
+- React
+- Redux
+- MongoDB
+- ExpressJs
+- npm
